@@ -176,26 +176,54 @@
 
                 	<section>
                 		<p> Data is sparse - lots and lots of zeros </p>
-                		<img src="img/ZerosIn10XData.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+                		<img src="img/ZerosIn10XData.png" width="50%" style="background:none; border:none; box-shadow:none; ">                		                		
+                	</section>
+                	
+                	<section>
+	                	<p>Single cell RNA-seq data is described as a Zero-Inflated negative binomal distribution</p>
+	                	<img src="img/zi-nb.png" width="60%" style="background:none; border:none; box-shadow:none; ">                		                
+                	</section>
+
+                	<section>
+	                	<p>In comparison to a bulk RNA-seq distribution</p>
+	                	<img src="img/nb.png" width="60%" style="background:none; border:none; box-shadow:none; ">                		                
+                	</section>
+                	
+                	<section>
+                	<h3> Dropout rates </h3>
+                	These models introduce a new parameter  dd , for the dropout rate, to the negative binomial model. We already observed that the dropout rate of a gene is strongly correlated with the mean expression of the gene. 
+
                 	</section>
                 	
              	</section>
                 	<section>
-                		<h3> Matrix -> Figure </h3>
-                		<p> The primary goal of every single cell experiment is to describe the heterogeneity of cell types present in the starting tissue population. This involves:</p>
-                		<ul>
-                			<li>Filtering low quality cells</li>
-                			<li>Filtering really sparse expressed genes</li>
-                			<li>Normalize gene expression</li>
-                			<li>Feature selection for clustering</li>
-                			<li>Dimensionality reduction</li>
-                			<li>Cluster identification</li>
-                			<li>Marker gene identification</li>
-                			<li>Cell type inference</li>                			                			                			
-                		</ul>
-                	</section>
+                		<section>
+	                		<h3> Matrix -> Figure </h3>
+	                		<p> The primary goal of every single cell experiment is to describe the heterogeneity of cell types present in the starting tissue population. This involves:</p>
+	                		<ul>
+	                			<li>Filtering low quality cells</li>
+	                			<li>Filtering really sparse expressed genes</li>
+	                			<li>Normalize gene expression</li>
+	                			<li>Feature selection for clustering</li>
+	                			<li>Dimensionality reduction</li>
+	                			<li>Cluster identification</li>
+	                			<li>Marker gene identification</li>
+	                			<li>Cell type inference</li>                			                			                			
+	                		</ul>
+	                	</section>
+	                	
+	                <section>
+	                	<p> Let's open the e-notebooks and make sure you everything is ready</p>
+	                	<br></br>
+	                	<p>Each of you has an Amazon EC2 cloud instance wth jupyter notebooks running python kernels</p>
+	                </section>
+                		
+                </section>
+                	
+                	
                 	
                 	<section>
+                		<section>
                 		<h3> Let's read in data </h3>
 					<pre><code data-trim contenteditable>
 def read10X(path):
@@ -215,9 +243,94 @@ def read10X(path):
     return counts, featureData
 					</code></pre>
 
-                	</section>
-                	                	                	
+                		</section>
+                	
+                		<section>
+                	<h3> How many genes and transcripts did we detect? </h3>
+               			<pre><code data-trim contenteditable>
+
+def plotQC(counts):
+                	
+    genesdetected=(counts>=1.).sum()
+    umi_counts=counts.sum()
+    
+    fig,(ax,ax1)=plt.subplots(1,2,figsize=(10, 5))
+
+    genesdetected.plot(kind='hist',bins=np.arange(0,5000,100),lw=0,ax=ax)
+    ax.grid('off')
+    ax.patch.set_facecolor('white')
+    ax.axvline(x=np.median(genesdetected),ls='--',lw=2,c='k')
+    ax.set_xlabel('Genes',fontsize=13)
+    ax.set_ylabel('Cells',fontsize=13)
+
+    umi_counts.plot(kind='hist',bins=np.arange(0,10000,500),lw=0,ax=ax1,color=sns.color_palette()[1])
+    ax1.grid('off')
+    ax1.patch.set_facecolor('white')
+    ax1.axvline(x=np.median(umi_counts),ls='--',lw=2,c='k')
+    ax1.set_xlabel('Transcripts - UMI',fontsize=13)
+    ax1.set_ylabel('Cells',fontsize=13)
+    					</code></pre>
+                		</section>
+                
+                		<section>
+	                		<p>Filter cells: How many minimum transcripts should we have?</p>
+	                		<br></br>
+	                		<p>Why filter on transcripts and not genes?</p>                		
+							<pre><code data-trim contenteditable>
+def filterCells(counts):
+    umi_counts=counts.sum()
+    cells1000=umi_counts[umi_counts>500].index
+    
+    return cells1000
+    						</code></pre>
+    					</section>
+    					<section>
+	    					<p>Filter genes: Dicard genes that are very very sparsely expressed</p>
+	    					<p>A gene has atleast 2 transcripts detected in at least 2 cells</p>
+	    					<pre><code data-trim contenteditable>
+
+
+def filterGenes(counts):
+    filteredGenes=counts.index[(counts >= 2).sum(1) >=2]
+    return filteredGenes
+							</code></pre>
+
+                		                	
+                		</section>
              	</section>
+             	
+             	
+             	<section>
+             		
+             		<section>
+             			<h3>Differential Expression (DE) analysis</h3>
+             			<p>
+             			Every analyses with analyzing bulk RNA-seq data eventually involves to identifying differentially expressed genes between experimental conditions.  Many methods, e.g. DESeq2 and edgeR, have been developed for bulk RNA-seq. These algorithms although not ideal for single cell RNA-seq data can still provide robust results. </p>
+             		</section>
+             		<section>
+             			<p>Some of the many algorithms are listed here for reference:
+             			<ul>
+             				<li>edgeR</li>
+             				<li>DESeq2</li>
+             				<li>KS</li>
+             				<li>Mann whitney U</li>
+             				<li>T-test</li>
+             				<li>SCDE - specifically for single cell</li>
+             				<li>T-test</li>
+             				<li>AUROC</li>
+             				<li>And many more</li>             				             				             				             				             				             				             				             				
+             			</ul>
+
+						</p>
+             		</section>
+
+             		<section>
+             		
+             		</section>
+             		
+             	</section>
+             	
+             	
              	<section>
              		<section>
              			<h3> 732,000 and counting </h3>
