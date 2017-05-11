@@ -42,32 +42,7 @@
               	</section>
                 <section>
                 	<section>
-                	<h3> All tissues are made up of various cell types </h3>
-                		<p> 
-
-	                			There are about 200 different cell types in the human body 
-	                			<img src="img/humancells.jpg" width="50%" style="background:none; border:none; box-shadow:none; ">
-	                			</p>
-              		</section>
-           			<section>
-              				<h3>These cells:</h3>
-						<ul>
-							<li>Look different</li>
-							<li>Do different things</li>
-							<li>Make different things</li>
-							<li>Talk to each other</li>
-						</ul>
-					</section>
-					<section>
-					<h3> Cells -> Tissues -> Organs </h3>
-                			<img src="img/cellstohuman.jpeg" width="100%" style="background:none; border:none; box-shadow:none; ">
-
-					</section>
-                		
-                </section>
-                <section>
-                	<section>
-	                	<h2> How did scientists find different cell types? </h2>
+	                	<h2> Early recognition of different functional cell types </h2>
 	                </section>
 	                <section>
 	                	<p> Retina by Ramon y Cajal 1852 - 1934</p>
@@ -78,121 +53,118 @@
 	                </section>
                </section>
 
+                
                 <section>
                 	<section>
-	                	<h3> But what makes them different? </h3>
-	                	<p> The different genes (parts list of a cell) expressed define the features and functions of cell types
-	                	<br>
-	                	<br>
-	                	Identifying what these genes are and how they change is an ongoing research project
-	                	</br></br> 
-	                	</p>
-	                </section>
-	                
-	                <section>
-	                	<h3> CD45 expression in Immune cells </h3>
-	                	<iframe width="900" height="800" frameborder="0" scrolling="no" data-src="https://plot.ly/~mbolisetty/1570.embed"></iframe>
-	                </section>
-	                
-	                <section>
-	                	<h3> EMCN expression Endothelial cells </h3>
-	                	<iframe width="900" height="800" frameborder="0" scrolling="no" data-src="https://plot.ly/~mbolisetty/1568.embed"></iframe>
-	                </section>
-	                
+	                <h4>Experimental methods for scRNA-seq data:</h4>
+	                <ul>
+								<li>CEL-seq (1,2)</li>
+								<li>Drop-seq</li>
+								<li>InDrop</li>
+								<li>MARS</li>							
+								<li>SCRB</li>
+								<li>Smart-seq (1,2</li>
+								<li>SMARter</li>
+								<li>10X-Chromium...</li>
+					</ul>
+					</section>
+					
+					<section>
+					<h3> Accuracy of different approaches </h3>
+					</br>
+                		<img src="img/accuracy.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+					</section>
+					
+					<section>
+					<h3> Sensitivity of different approaches </h3>
+					</br>
+                		<img src="img/sensitivity.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+					</section>
+
                 </section>
                 
                 <section>
                 	<section>
-                		<h3> In single cell biology we attempt to define these genes in a cell and tissue specific manner</h3>
+                		<h3> 10X Genomics </h3>
+                		</br>
+                		<img src="img/10xgenomics.png" width="100%" style="background:none; border:none; box-shadow:none; ">
                 	</section>
-                	<section>
-                		<h3>This lets us: </h3>
-                		<ul>
-                			<li>Understand what makes them different</li>
-							<li>Discover how cells talk to each other</li>
-							<li>Identify what goes wrong in diseases</li>
-							<li>Try to remove, repair or replace only the cells that have gone awry</li>
-                		</ul>
+                	
+	               	<section>
+                		<h3> Microfluidics enables us to capture each cell and look at all the genes</h3>
+							<iframe frameborder=0 width=95% height=586 marginheight=0 marginwidth=0 scrolling=no data-src="img/mmc4.mp4"></iframe>
                 	</section>
-                </section>
-                
-                <section>
+
                 	<section>
-                		<h3>Imagine this circle to be a tissue</h3>
+                		<h3>Our goal today:</h3>
                 		<img src="img/bigblackcircle.png" width="50%" style="background:none; border:none; box-shadow:none; ">
 
-                		<p> Till 5 years ago, we had the ability to define the genes present in the entire circle as sum </p>
+                		<p> Till 5 years ago, we had the ability to profile this tissue as bulk </p>
                 	</section>
                 	
                 	<section>
-                		<p>But really, we know that there are many different cell types present by looking under the microscope 
+                		<p>But really, we already know: 
                 		<br>
                 		<br>
-                		So that big cirle really is:
+                		 That big cirle really is:
                 		</br></br>
                 		<img src="img/circlepack.png" width="50%" style="background:none; border:none; box-shadow:none; ">
                 		</p>
                 	</section>
                 	
                 	<section>
-                		<h3> Microfluidics enables us to capture each cell and look at all the genes</h3>
-							<iframe frameborder=0 width=95% height=586 marginheight=0 marginwidth=0 scrolling=no data-src="img/mmc4.mp4"></iframe>
+                		<h3> Bioinformatics </h3>
+                		<br></br>
+                		<br></br>
+                		<h4> Reads -> Matrix -> Figures </h4>
+                		
                 	</section>
-                </section>
+
+                	<section>
+                		<h3> Reads -> Matrix </h3>
+                		<br></br>
+                		<h4> CellRanger Pipeline</h4>
+                		
+                		<img src="img/pipeline.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                	</section>
                 
-             	<section>
-             		<section>
-             			<h3> Clustering: Group like cells together </h3>
-             			<p> This method allows us to define 1000's of genes in each cell.
-             			</p>
-             			<img src="img/classificationNeurons.png" width="75%" style="background:none; border:none; box-shadow:none; ">
-             		</section>
-             		<section>
-              		<h3>We can now define: </h3>
-                		<ul>
-                			<li>The genes specific to each cell type</li>
-							<li>The heterogeneity of cells in each cell type</li>
-							<li>Study interactions </li>
-							<li>Find out what genes go awry in disease </li>
-                		</ul>
 
-             		</section>
-             	</section>
+                	<section>
+                		<h3> Read 1: Cell barcode UMI </h3>
+                		<br></br>
+                		<img src="img/read1.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                		
+                	</section>
+
+                	<section>
+                		<h3> Read 2: Transcript specific read </h3>
+                		<br></br>
+                		<img src="img/read2.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                		
+                	</section>
+
+                	<section>
+                		<h3> BAM: Alignment and transcript assignment </h3>
+                		<br></br>
+                		<img src="img/bam.png" width="150%" style="background:none; border:none; box-shadow:none; ">
+                		
+                	</section>
+
+
+                	<section>
+                		<h3> Expression matrix </h3>
+                		<br></br>
+                		<img src="img/expression.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+                	</section>
+                	
+                </section>
              	
              	<section>
              		<section>
-             			<h3> Cell types of the pancreatic islets </h3>
-             			<p>These cell types coordinate the response to increased sugar in your blood after a meal</p>
-             			<img src="img/isletsclustering.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-             		</section>
-             		
-					<section>
-             			<h3> Pathway to convert food to molecular energy </h3>
-             			<img src="img/glycolysis.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-             		</section>
-             		
-             		<section>
-             			<h3> Delta cells: Integrator of signals </h3>
-             			<img src="img/deltacells.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-             		</section>
-
-             	</section>
-             	
-             	<section>
-             		<section>
-             			<h3> 626,000 and counting </h3>
+             			<h3> 732,000 and counting </h3>
              			<iframe width="600" height="400" frameborder="0" scrolling="no" data-src="https://plot.ly/~mbolisetty/1562.embed"></iframe>
              		</section>
              		
-             		<section>
-             			<h3>We have studied and try to define: </h3>
-                		<ul>
-                			<li>Tissues: Eye, Kidney, Lung, Pancreas, Ovary, Bladder ...</li>
-							<li>Diseases: Cancer (of various tissues), Diabetes, Degeneration </li>
-							<li>Species: Human, Mouse, Fruit fly </li>
-                		</ul>
-
-             		</section>
              	</section>
              	
              	<section>
@@ -200,6 +172,7 @@
              		<br></br>
              		<br></br>
              		<p>email me: mohan.bolisetty@jax.org </p>
+             		<p>slides: mohanbolisetty.github.io/JAX-NeuroGeneticsSClDataAnalysis/
              	</section>
              	
 
