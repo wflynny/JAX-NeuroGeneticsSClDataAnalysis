@@ -126,7 +126,7 @@
                 		<br></br>
                 		<h4> CellRanger Pipeline</h4>
                 		
-                		<img src="img/pipeline.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                		<img src="img/pipeline.png" width="150%" style="background:none; border:none; box-shadow:none; ">
                 	</section>
                 
 
@@ -147,7 +147,7 @@
                 	<section>
                 		<h3> BAM: Alignment and transcript assignment </h3>
                 		<br></br>
-                		<img src="img/bam.png" width="150%" style="background:none; border:none; box-shadow:none; ">
+                		<img src="img/bam.png" width="200%" style="background:none; border:none; box-shadow:none; ">
                 		
                 	</section>
 
@@ -193,6 +193,28 @@
                 			<li>Marker gene identification</li>
                 			<li>Cell type inference</li>                			                			                			
                 		</ul>
+                	</section>
+                	
+                	<section>
+                		<h3> Let's read in data </h3>
+					<pre><code data-trim contenteditable>
+def read10X(path):
+    mat = scipy.io.mmread(os.path.join(path,"matrix.mtx"))
+ 
+    genes_path =os.path.join(path,"genes.tsv")
+    gene_ids = [row[0] for row in csv.reader(open(genes_path), delimiter="\t")]
+    gene_names = [row[1] for row in csv.reader(open(genes_path), delimiter="\t")]
+
+    barcodes_path = os.path.join(path,"barcodes.tsv")
+    barcodes = [row[0] for row in csv.reader(open(barcodes_path), delimiter="\t")]
+    
+    featureData=pd.DataFrame(data=gene_names, index=gene_ids, columns=['Associated.Gene.Name'])
+    
+    counts=pd.DataFrame(index=gene_ids,columns=barcodes,data=mat.todense())
+    
+    return counts, featureData
+					</code></pre>
+
                 	</section>
                 	                	                	
              	</section>
