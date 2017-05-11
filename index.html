@@ -106,7 +106,7 @@
                 		<p>But really, we already know: 
                 		<br>
                 		<br>
-                		 That big cirle really is:
+                		 That big circle really is:
                 		</br></br>
                 		<img src="img/circlepack.png" width="50%" style="background:none; border:none; box-shadow:none; ">
                 		</p>
@@ -242,6 +242,10 @@ def read10X(path):
     
     return counts, featureData
 					</code></pre>
+						<pre><code data-trim contenteditable>
+counts, featuredata=read10X('Data/')
+						</code></pre>
+
 
                 		</section>
                 	
@@ -270,6 +274,17 @@ def plotQC(counts):
     ax1.set_xlabel('Transcripts - UMI',fontsize=13)
     ax1.set_ylabel('Cells',fontsize=13)
     					</code></pre>
+    					
+						<pre><code data-trim contenteditable>
+plotsQC(counts)
+						</code></pre>
+
+                		</section>
+                		
+                		<section>
+                			<h3>Genes and Transcripts</h3>
+                			<img src="img/qc.png" width="80%" style="background:none; border:none; box-shadow:none; ">                		                
+                			
                 		</section>
                 
                 		<section>
@@ -286,9 +301,8 @@ def filterCells(counts):
     					</section>
     					<section>
 	    					<p>Filter genes: Dicard genes that are very very sparsely expressed</p>
-	    					<p>A gene has atleast 2 transcripts detected in at least 2 cells</p>
+	    					<p>A gene has at least 2 transcripts detected in at least 2 cells</p>
 	    					<pre><code data-trim contenteditable>
-
 
 def filterGenes(counts):
     filteredGenes=counts.index[(counts >= 2).sum(1) >=2]
@@ -297,11 +311,103 @@ def filterGenes(counts):
 
                 		                	
                 		</section>
+                		
+    					<section>
+	    					<p>Filter & Normalize gene expression</p>
+	    					<pre><code data-trim contenteditable>
+def normalize(counts):
+    cells1000=filterCells(counts)
+    filteredGenes=filterGenes(counts)
+    umi_counts=counts.sum()
+    
+    cpt=counts*np.median(umi_counts)/umi_counts
+    cpt=cpt.loc[filteredGenes,cells1000]
+    cpt=(cpt+1).apply(np.log)
+    
+    return cpt
+				    </code></pre>
+							<pre><code data-trim contenteditable>
+cpt=normalize(counts)
+    						</code></pre>
+				    
+                		</section> 
+                		
+                		<section>
+                			<p> How many genes and cells are left after filtering </p>
+							<pre><code data-trim contenteditable>
+cpt.shape
+    						</code></pre>
+                		</section> 
              	</section>
-             	
-             	
+
+				<section>
+					<section>
+						<h3> Dimensionality reduction with tSNE </h3>
+							<pre><code data-trim contenteditable>
+def runTSNE(cpt,genes):
+    np.savetxt('Data/filtered.tsv', cpt.loc[top1000].T.values, delimiter='\t')
+    cmd='/opt/bhtsne/bhtsne.py -d 3 -i Data/filtered.tsv --no_pca -r 1024 -o Data/out.tsv'
+    cmd=shlex.split(cmd)    
+    proc=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    stdout, stderr=proc.communicate()
+    tsne=np.loadtxt('Data/out.tsv')
+    tsneData=pd.DataFrame(tsne,index=cpt.columns, columns=['V1','V2','V3'])
+    return tsneData
+    						</code></pre>				    						
+							<pre><code data-trim contenteditable>
+tsnedata=runTSNE(cpt,top1000)
+    						</code></pre>			
+					</section>
+					<section>
+					<p>We reduced the data to 3 dimensions, so we can visualize multiple dimensions. The three dimensions are represented by V1,V2,V3. Try to change the dimension and see how the different clusters.</p>
+							<pre><code data-trim contenteditable>
+plt.scatter(tsnedata['V2'],tsnedata['V3'],s=5)
+    						</code></pre>			
+					</section>
+					<section>
+						<h3> Clusters </h3>
+						<img src="img/clusters.png" width="80%" style="background:none; border:none; box-shadow:none; ">                		                
+					</section>
+					
+					<section>
+						<p> Lets look at a gene and it's expression across all clusters <p>
+						<img src="img/snap25.png" width="80%" style="background:none; border:none; box-shadow:none; ">
+					</section>
+					
+					<section>
+						<p> Lets try a few others <br></br></p>
+							<pre><code data-trim contenteditable>						
+plotTSNE(cpt,tsnedata,'Gapdh',featuredata,'V1','V3')
+plotTSNE(cpt,tsnedata,'Emcn',featuredata,'V1','V3')
+plotTSNE(cpt,tsnedata,'Slc32a1',featuredata,'V1','V3')
+plotTSNE(cpt,tsnedata,'Slc17a6',featuredata,'V1','V3')
+plotTSNE(cpt,tsnedata,'Gfap',featuredata,'V1','V3')
+						</code></pre>
+					</section>
+					
+					<section>
+						<h3> DBSCAN to call clusters </h3>
+							<pre><code data-trim contenteditable>
+def dbscan(tsnedata,eps,minCells):
+    from sklearn.cluster import DBSCAN
+    db = DBSCAN(eps=eps, min_samples=minCells).fit(tsnedata.values)
+    tsnedata['dbCluster'] = db.labels_+1
+    
+    return tsnedata
+    						</code></pre>		
+    						<p> There are 2 main parameters in DBSCAN to influence clustering, eps and minCells. Change these parameters to see how the cluster calling is influenced</p>		    						
+							<pre><code data-trim contenteditable>
+tsnedata_dbscan=dbscan(tsnedata,3.5,40)
+plotTSNEClusters(tsnedata_dbscan,'V2','V3')
+    						</code></pre>			
+					</section>
+					<section>
+						<h3> Clusters </h3>
+						<img src="img/dbscan.png" width="75%" style="background:none; border:none; box-shadow:none; ">                		                
+					</section>
+				</section>
+             	             	
              	<section>
-             		
              		<section>
              			<h3>Differential Expression (DE) analysis</h3>
              			<p>
@@ -325,12 +431,69 @@ def filterGenes(counts):
              		</section>
 
              		<section>
-             		
+             			<h3> AUROC to find markers</h3>
+             									<pre><code data-trim contenteditable>
+def findMarkers(cpt,cells1,cells2,genes):
+    aucScores=[]
+    from sklearn import metrics
+    for gene in genes:
+        y=[1]*len(cells2)+[2]*len(cells1)
+        pred = np.concatenate((cpt.loc[gene,cells2],cpt.loc[gene,cells1]))
+        fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=2)
+        aucScores.append(metrics.auc(fpr, tpr))
+    return pd.DataFrame(aucScores,index=genes,columns=['Score'])
+    						</code></pre>		             			
              		</section>
              		
+             		<section>
+           									<pre><code data-trim contenteditable>             		
+aurocScoresAll=pd.DataFrame()
+for cluster in range(1,8,1):
+
+    cells1=tsnedata_dbscan[tsnedata_dbscan['dbCluster']==cluster].index
+    cells2=tsnedata_dbscan.index.difference(cells1)
+
+    data1=cpt.loc[cpt.index,cells1].apply(expMean,1)
+    data2=cpt.loc[cpt.index,cells2].apply(expMean,1)
+    totaldiff=(data1-data2)
+    genes=totaldiff[totaldiff>1.].index
+
+    aurocScores=findMarkers(cpt,
+                  cells1,
+                  cells2,
+                  genes
+                 )
+    aurocScores['Associated.Gene.Name']=featuredata['Associated.Gene.Name']
+    aurocScores['dbCluster']=cluster
+    aurocScoresAll=aurocScoresAll.append(aurocScores)
+			    </code></pre>		             			
+
+             		</section>
+             		
+             		<section>
+             			<h3> Visualize marker expression across all cells </h3>
+             			<img src="img/markers.png" width="120%" style="background:none; border:none; box-shadow:none; ">                		                
+             		</section>
+             		
+             		<section>
+             			<h3> Marker genes </h3>
+             			<p>Plp1,Cldn11,Ugt8a,Sirt2,Mag,Mobp,Cnp,Mbp,Cck,Pcp4,Nap1l5,Meg3,Gap43,Rgs5,Itm2a,Tmsb4x,Slc16a1,Igfbp7,Hbb-bt,Hbb-bs,Bsg,Klf2,Junb,Hba-a1,Hba-a2,Sparc,Ctla2a,Cldn5,Dbi,Atp1a2,Slc1a2,Cst3,Fabp5,Plpp3,Id3,Sparcl1,Ptn,Apoe,Gja1,Fabp7,Cpe,Mt3,Mt1,Ndrg2,Clu,Aldoc,Id2,Ckb,Pla2g7,Aqp4,Col3a1,Igfbp2,Ptgds,S100a6,Col1a2,Ptn,Cxcl12,Nupr1,Igf2,Dcn,Lum,Col4a1,Klf2,Junb,Sparc,Vtn,Col1a1,Lgals1,Apod,Fcer1g,B2m,Cst3,Tmsb4x,P2ry12,Ctss,C1qb,C1qc,C1qa,Tyrobp,Ftl1,Ctsd,Junb,Ccl2,Ccl7,Ccl12,Ccl3,Ccl4,Cd83,Hexb,Rps29,Lgmn,Sepp1</p>
+             		</section>
              	</section>
-             	
-             	
+				
+				<section>
+					<h3> CellView: Interactive Exploration Of High Dimensional Single Cell RNA-Seq Data </h3>
+					<p> A web application to visualized and explore single cell RNA-seq data </p>
+           									<pre><code data-trim contenteditable>             		
+mkRds(cpt,featuredata,tsnedata_dbscan)
+			    </code></pre>		  
+			    <p> Download Data.Rds and we will upload to this website:
+			    <br></br>
+			    https://mbolisetty.shinyapps.io/CellView/	
+			    </p>           			
+					
+				</section>
+
              	<section>
              		<section>
              			<h3> 732,000 and counting </h3>
@@ -338,6 +501,20 @@ def filterGenes(counts):
              		</section>
              		
              	</section>
+
+             	<section>
+             		<h3> Acknowledgments </h3>
+             		<br></br>
+             		<p>
+	             		<ul>
+	             		<li>Sandeep Namburi - Research IT</li>
+	             		<li>Aditya Kovuri - Research IT </li>
+	             		<li>Sandy Daigle - Single cell </li>
+	             		<li>Genome Technologies</li>
+	             		</ul>
+             		</p>
+             	</section>
+
              	
              	<section>
              		<h3> Questions? </h3>
