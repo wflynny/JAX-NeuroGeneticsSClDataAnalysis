@@ -1,539 +1,427 @@
 <html>
-    <head>
-    
-    	<title>Single cell biology</title>
-        
-        <link rel="stylesheet" href="css/reveal.css">
-        <link rel="stylesheet" href="css/theme/white.css">
-        
-        <link rel="stylesheet" href="lib/css/zenburn.css">
-        
-        <script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
+  <head>
+    <title>Single cell biology</title>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-    </head>
-    
-    <body>
-        <div class="reveal">
-            <div class="slides">
-                <section>
-                	<h3> Single cell biology: <br >Studying every cell </br> </h3>
-                	<iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plot.ly/~mbolisetty/1567.embed"></iframe>
-                </section>
-			
-				<section>
-                	<h3> What is a cell? </h3>
-						<p>
-							<blockquote >
-								&ldquo;The cell is the most basic unit of life&rdquo;
-								<br>
-									-Theodor Schwann
-								</br>
-							</blockquote>
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+  </head>
 
-							<img src="img/Wilson1900Fig2.jpg" width="50%" style="background:none; border:none; box-shadow:none; ">
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h3> Single cell biology: <br >Studying every cell</h3>
+          <iframe width="900" height="700" frameborder="0" scrolling="no" src="https://plot.ly/~mbolisetty/1567.embed"></iframe>
+        </section>
 
-						</p>                
-              	</section>
-                <section>
-                	<section>
-	                	<h2> Early recognition of different functional cell types </h2>
-	                </section>
-	                <section>
-	                	<p> Retina by Ramon y Cajal 1852 - 1934</p>
-	                	<img src="img/Cajal2.jpg" width="50%" style="background:none; border:none; box-shadow:none; ">
-	                </section>
-	                <section>
-	                	<p> Many cell types were simply identified by looking under a microscope and looking at morphology. Technological advances in microscopes made this easier and faster</p>
-	                </section>
-               </section>
+        <section>
+          <h3> What is a cell? </h3>
+            <p>
+              <blockquote >
+                &ldquo;The cell is the most basic unit of life&rdquo;
+                <br>
+                  -Theodor Schwann
+              </blockquote>
 
-                
-                <section>
-                	<section>
-	                <h4>Experimental methods for scRNA-seq data:</h4>
-	                <ul>
-								<li>CEL-seq (1,2)</li>
-								<li>Drop-seq</li>
-								<li>InDrop</li>
-								<li>MARS</li>							
-								<li>SCRB</li>
-								<li>Smart-seq (1,2</li>
-								<li>SMARter</li>
-								<li>10X-Chromium...</li>
-					</ul>
-					</section>
-					
-					<section>
-					<h3> Accuracy of different approaches </h3>
-					</br>
-                		<img src="img/accuracy.png" width="100%" style="background:none; border:none; box-shadow:none; ">
-					</section>
-					
-					<section>
-					<h3> Sensitivity of different approaches </h3>
-					</br>
-                		<img src="img/sensitivity.png" width="100%" style="background:none; border:none; box-shadow:none; ">
-					</section>
+              <img src="img/Wilson1900Fig2.jpg" width="50%" style="background:none; border:none; box-shadow:none; ">
+            </p>
+        </section>
 
-                </section>
-                
-                <section>
-                	<section>
-                		<h3> 10X Genomics </h3>
-                		</br>
-                		<img src="img/10xgenomics.png" width="100%" style="background:none; border:none; box-shadow:none; ">
-                	</section>
-                	
-	               	<section>
-                		<h3> Microfluidics enables us to capture each cell and look at all the genes</h3>
-							<iframe frameborder=0 width=95% height=586 marginheight=0 marginwidth=0 scrolling=no data-src="img/mmc4.mp4"></iframe>
-                	</section>
+        <section>
+          <section>
+            <h2> Early recognition of different functional cell types </h2>
+          </section>
 
-                	<section>
-                		<h3>Our goal today:</h3>
-                		<img src="img/bigblackcircle.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+          <section>
+            <p>
+              Retina (neuronal theory) by Ramon y Cajal 1852 - 1934
+            </p>
+            <img src="img/Cajal2.jpg" width="50%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-                		<p> Till 5 years ago, we had the ability to profile this tissue as bulk </p>
-                	</section>
-                	
-                	<section>
-                		<p>But really, we already know: 
-                		<br>
-                		<br>
-                		 That big circle really is:
-                		</br></br>
-                		<img src="img/circlepack.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-                		</p>
-                	</section>
-                </section>
-                <section>
-                	<section>
-                		<h3> Bioinformatics </h3>
-                		<br></br>
-                		<br></br>
-                		<h4> Reads -> Matrix -> Figures </h4>
-                		
-                	</section>
+          <section>
+            <p>
+              Many cell types were simply identified by looking under a
+              microscope and looking at morphology. Technological advances in
+              microscopes made this easier and faster.
+            </p>
+          </section>
 
-                	<section>
-                		<h3> Reads -> Matrix </h3>
-                		<br></br>
-                		<h4> CellRanger Pipeline</h4>
-                		
-                		<img src="img/pipeline.png" width="150%" style="background:none; border:none; box-shadow:none; ">
-                	</section>
-                
+          <section>
+            <p>
+              Up until recently, it was difficult or impossible to classify
+              even modest numbers of cells by anything other than cell surface
+              markers or observed functions.
+            </p>
+            <p>
+              Advances in sequencing afford the ability to now look at
+              transcriptional activity of many cells at a time.
+            </p>
+          </section>
+        </section>
 
-                	<section>
-                		<h3> Read 1: Cell barcode UMI </h3>
-                		<br></br>
-                		<img src="img/read1.png" width="100%" style="background:none; border:none; box-shadow:none; ">
-                		
-                	</section>
+        <section>
+          <section>
+            <h4>Experimental methods to generate scRNA-seq data:</h4>
+            <ul>
+              <li>CEL-seq (1,2)</li>
+              <li>Drop-seq</li>
+              <li>InDrop</li>
+              <li>MARS</li>
+              <li>SCRB</li>
+              <li>Smart-seq (1,2)</li>
+              <li>SMARter</li>
+              <li>10X-Chromium</li>
+            </ul>
+          </section>
 
-                	<section>
-                		<h3> Read 2: Transcript specific read </h3>
-                		<br></br>
-                		<img src="img/read2.png" width="100%" style="background:none; border:none; box-shadow:none; ">
-                		
-                	</section>
+          <section>
+            <h3> Accuracy of different approaches </h3>
+            <br>
+            <img src="img/accuracy.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-                	<section>
-                		<h3> BAM: Alignment and transcript assignment </h3>
-                		<br></br>
-                		<img src="img/bam.png" width="200%" style="background:none; border:none; box-shadow:none; ">
-                		
-                	</section>
+          <section>
+            <h3> Sensitivity of different approaches </h3>
+            <br>
+            <img src="img/sensitivity.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+          </section>
+        </section>
 
-                </section>
-                <section>
+        <section>
+          <section>
+            <h3> 10X Genomics </h3>
+            <br>
+            <img src="img/10xgenomics.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-                	                	
-                	<section>
-                		<h3> Summary stats </h3>
-                		<img src="img/summaryStats.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-                	</section>
-                	
+          <section>
+            <h3> Microfluidics enables us to capture each cell and look at all the genes</h3>
+            <iframe frameborder=0 width=95% height=586 marginheight=0 marginwidth=0 scrolling=no data-src="img/mmc4.mp4"></iframe>
+          </section>
 
-                	                	
-                	<section>
-                		<h3> Summary stats </h3>
-                		<img src="img/summaryStats2.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-                	</section>
-                	
-                	                	
-                	<section>
-                		<h3> Expression matrix </h3>
-                		<br></br>
-                		<img src="img/expression.png" width="50%" style="background:none; border:none; box-shadow:none; ">
-                	</section>
+          <section>
+            <h3>Our goal today:</h3>
+            <img src="img/smoothie.jpg" width="40%" style="background:none; border:none; box-shadow:none; ">
 
-                	<section>
-                		<p> Data is sparse - lots and lots of zeros </p>
-                		<img src="img/ZerosIn10XData.png" width="50%" style="background:none; border:none; box-shadow:none; ">                		                		
-                	</section>
-                	
-                	<section>
-	                	<p>Single cell RNA-seq data is described as a Zero-Inflated negative binomal distribution</p>
-	                	<img src="img/zi-nb.png" width="60%" style="background:none; border:none; box-shadow:none; ">                		                
-                	</section>
+            <p>Until 6 years ago, we only had the ability to profile a tissue as bulk.</p>
+          </section>
 
-                	<section>
-	                	<p>In comparison to a bulk RNA-seq distribution</p>
-	                	<img src="img/nb.png" width="60%" style="background:none; border:none; box-shadow:none; ">                		                
-                	</section>
-                	
-                	<section>
-                	<h3> Dropout rates </h3>
-                	These models introduce a new parameter  dd , for the dropout rate, to the negative binomial model. We already observed that the dropout rate of a gene is strongly correlated with the mean expression of the gene. 
+          <section>
+            <img src="img/fruit.jpg" width="50%" style="background:none; border:none; box-shadow:none; ">
+            <p>
+              But now we can examine each piece individually.
+            </p>
+            <p style="font-size: 12pt">
+              Analogy from Hyun Min Kang, UMichigan, 2018
+            </p>
+          </section>
+        </section>
 
-                	</section>
-                	<section>
-                	<h3> Detection Probability </h3>
-                		                	<img src="img/DetectionAsAFunctionOfExpression.png" width="60%" style="background:none; border:none; box-shadow:none; ">                		                
-                	</section>
-                	
-             	</section>
-                	<section>
-                		<section>
-	                		<h3> Matrix -> Figure </h3>
-	                		<p> The primary goal of every single cell experiment is to describe the heterogeneity of cell types present in the starting tissue population. This involves:</p>
-	                		<ul>
-	                			<li>Filtering low quality cells</li>
-	                			<li>Filtering really sparse expressed genes</li>
-	                			<li>Normalize gene expression</li>
-	                			<li>Feature selection for clustering</li>
-	                			<li>Dimensionality reduction</li>
-	                			<li>Cluster identification</li>
-	                			<li>Marker gene identification</li>
-	                			<li>Cell type inference</li>                			                			                			
-	                		</ul>
-	                	</section>
-	                	
-	                <section>
-	                	<p> Let's open the e-notebooks and make sure you everything is ready</p>
-	                	<br></br>
-	                	<p>Each of you has an Amazon EC2 cloud instance wth jupyter notebooks running python kernels</p>
-	                </section>
-                		
-                </section>
-                	
-                	
-                	
-                	<section>
-                		<section>
-                		<h3> Let's read in data </h3>
-					<pre><code data-trim contenteditable>
-def read10X(path):
-    mat = scipy.io.mmread(os.path.join(path,"matrix.mtx"))
- 
-    genes_path =os.path.join(path,"genes.tsv")
-    gene_ids = [row[0] for row in csv.reader(open(genes_path), delimiter="\t")]
-    gene_names = [row[1] for row in csv.reader(open(genes_path), delimiter="\t")]
+        <section>
+          <section>
+            <h3> Bioinformatics </h3>
+            <br>
+            <br>
+            <h4> Reads -> Matrix -> Insights</h4>
+          </section>
 
-    barcodes_path = os.path.join(path,"barcodes.tsv")
-    barcodes = [row[0] for row in csv.reader(open(barcodes_path), delimiter="\t")]
-    
-    featureData=pd.DataFrame(data=gene_names, index=gene_ids, columns=['Associated.Gene.Name'])
-    
-    counts=pd.DataFrame(index=gene_ids,columns=barcodes,data=mat.todense())
-    
-    return counts, featureData
-					</code></pre>
-						<pre><code data-trim contenteditable>
-counts, featuredata=read10X('Data/')
-						</code></pre>
+          <section>
+            <h3> Reads -> Matrix </h3>
+            <br>
+            <h4> CellRanger Pipeline</h4>
+            <img src="img/pipeline.png" width="150%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
 
-                		</section>
-                	
-                		<section>
-                	<h3> How many genes and transcripts did we detect? </h3>
-               			<pre><code data-trim contenteditable>
+          <section>
+            <h3> Read 1: Cell barcode UMI </h3>
+            <br>
+            <img src="img/read1-bill.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-def plotQC(counts):
-                	
-    genesdetected=(counts>=1.).sum()
-    umi_counts=counts.sum()
-    
-    fig,(ax,ax1)=plt.subplots(1,2,figsize=(10, 5))
+          <section>
+            <h3> Read 2: Transcript specific read </h3>
+            <br>
+            <img src="img/read2-bill.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-    genesdetected.plot(kind='hist',bins=np.arange(0,5000,100),lw=0,ax=ax)
-    ax.grid('off')
-    ax.patch.set_facecolor('white')
-    ax.axvline(x=np.median(genesdetected),ls='--',lw=2,c='k')
-    ax.set_xlabel('Genes',fontsize=13)
-    ax.set_ylabel('Cells',fontsize=13)
+          <section>
+            <h3> BAM: Alignment and transcript assignment </h3>
+            <br>
+            <img src="img/bam-bill.png" width="200%" style="background:none; border:none; box-shadow:none; ">
+          </section>
+        </section>
 
-    umi_counts.plot(kind='hist',bins=np.arange(0,10000,500),lw=0,ax=ax1,color=sns.color_palette()[1])
-    ax1.grid('off')
-    ax1.patch.set_facecolor('white')
-    ax1.axvline(x=np.median(umi_counts),ls='--',lw=2,c='k')
-    ax1.set_xlabel('Transcripts - UMI',fontsize=13)
-    ax1.set_ylabel('Cells',fontsize=13)
-    					</code></pre>
-    					
-						<pre><code data-trim contenteditable>
-plotsQC(counts)
-						</code></pre>
+        <section>
+          <section>
+            <h3> Summary stats </h3>
+            <img src="img/summaryStats.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-                		</section>
-                		
-                		<section>
-                			<h3>Genes and Transcripts</h3>
-                			<img src="img/qc.png" width="80%" style="background:none; border:none; box-shadow:none; ">                		                
-                			
-                		</section>
-                
-                		<section>
-	                		<p>Filter cells: How many minimum transcripts should we have?</p>
-	                		<br></br>
-	                		<p>Why filter on transcripts and not genes?</p>                		
-							<pre><code data-trim contenteditable>
-def filterCells(counts):
-    umi_counts=counts.sum()
-    cells1000=umi_counts[umi_counts>500].index
-    
-    return cells1000
-    						</code></pre>
-    					</section>
-    					<section>
-	    					<p>Filter genes: Dicard genes that are very very sparsely expressed</p>
-	    					<p>A gene has at least 2 transcripts detected in at least 2 cells</p>
-	    					<pre><code data-trim contenteditable>
+          <section>
+            <h3> Summary stats </h3>
+            <img src="img/summaryStats2.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-def filterGenes(counts):
-    filteredGenes=counts.index[(counts >= 2).sum(1) >=2]
-    return filteredGenes
-							</code></pre>
+          <section>
+            <h3> Expression matrix </h3>
+            <br>
+            <img src="img/expression.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-                		                	
-                		</section>
-                		
-    					<section>
-	    					<p>Filter & Normalize gene expression</p>
-	    					<pre><code data-trim contenteditable>
-def normalize(counts):
-    cells1000=filterCells(counts)
-    filteredGenes=filterGenes(counts)
-    umi_counts=counts.sum()
-    
-    cpt=counts*np.median(umi_counts)/umi_counts
-    cpt=cpt.loc[filteredGenes,cells1000]
-    cpt=(cpt+1).apply(np.log)
-    
-    return cpt
-				    </code></pre>
-							<pre><code data-trim contenteditable>
-cpt=normalize(counts)
-    						</code></pre>
-				    
-                		</section> 
-                		
-                		<section>
-                			<p> How many genes and cells are left after filtering </p>
-							<pre><code data-trim contenteditable>
-cpt.shape
-    						</code></pre>
-                		</section> 
-             	</section>
+          <section>
+            <p> Data is sparse - lots and lots of zeros </p>
+            <img src="img/ZerosIn10XData.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-				<section>
-					<section>
-						<h3> Dimensionality reduction with tSNE </h3>
-							<pre><code data-trim contenteditable>
-def runTSNE(cpt,genes):
-    np.savetxt('Data/filtered.tsv', cpt.loc[top1000].T.values, delimiter='\t')
-    cmd='/opt/bhtsne/bhtsne.py -d 3 -i Data/filtered.tsv --no_pca -r 1024 -o Data/out.tsv'
-    cmd=shlex.split(cmd)    
-    proc=subprocess.Popen(cmd,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    stdout, stderr=proc.communicate()
-    tsne=np.loadtxt('Data/out.tsv')
-    tsneData=pd.DataFrame(tsne,index=cpt.columns, columns=['V1','V2','V3'])
-    return tsneData
-    						</code></pre>				    						
-							<pre><code data-trim contenteditable>
-tsnedata=runTSNE(cpt,top1000)
-    						</code></pre>			
-					</section>
-					<section>
-					<p>We reduced the data to 3 dimensions, so we can visualize multiple dimensions. The three dimensions are represented by V1,V2,V3. Try to change the dimension and see how the different clusters.</p>
-							<pre><code data-trim contenteditable>
-plt.scatter(tsnedata['V2'],tsnedata['V3'],s=5)
-    						</code></pre>			
-					</section>
-					<section>
-						<h3> Clusters </h3>
-						<img src="img/clusters.png" width="80%" style="background:none; border:none; box-shadow:none; ">                		                
-					</section>
-					
-					<section>
-						<p> Lets look at a gene and it's expression across all clusters <p>
-						<img src="img/snap25.png" width="80%" style="background:none; border:none; box-shadow:none; ">
-					</section>
-					
-					<section>
-						<p> Lets try a few others <br></br></p>
-							<pre><code data-trim contenteditable>						
-plotTSNE(cpt,tsnedata,'Gapdh',featuredata,'V1','V3')
-plotTSNE(cpt,tsnedata,'Emcn',featuredata,'V1','V3')
-plotTSNE(cpt,tsnedata,'Slc32a1',featuredata,'V1','V3')
-plotTSNE(cpt,tsnedata,'Slc17a6',featuredata,'V1','V3')
-plotTSNE(cpt,tsnedata,'Gfap',featuredata,'V1','V3')
-						</code></pre>
-					</section>
-					
-					<section>
-						<h3> DBSCAN to call clusters </h3>
-							<pre><code data-trim contenteditable>
-def dbscan(tsnedata,eps,minCells):
-    from sklearn.cluster import DBSCAN
-    db = DBSCAN(eps=eps, min_samples=minCells).fit(tsnedata.values)
-    tsnedata['dbCluster'] = db.labels_+1
-    
-    return tsnedata
-    						</code></pre>		
-    						<p> There are 2 main parameters in DBSCAN to influence clustering, eps and minCells. Change these parameters to see how the cluster calling is influenced</p>		    						
-							<pre><code data-trim contenteditable>
-tsnedata_dbscan=dbscan(tsnedata,3.5,40)
-plotTSNEClusters(tsnedata_dbscan,'V2','V3')
-    						</code></pre>			
-					</section>
-					<section>
-						<h3> Clusters </h3>
-						<img src="img/dbscan.png" width="75%" style="background:none; border:none; box-shadow:none; ">                		                
-					</section>
-				</section>
-             	             	
-             	<section>
-             		<section>
-             			<h3>Differential Expression (DE) analysis</h3>
-             			<p>
-             			Every analyses with analyzing bulk RNA-seq data eventually involves to identifying differentially expressed genes between experimental conditions.  Many methods, e.g. DESeq2 and edgeR, have been developed for bulk RNA-seq. These algorithms although not ideal for single cell RNA-seq data can still provide robust results. </p>
-             		</section>
-             		<section>
-             			<p>Some of the many algorithms are listed here for reference:
-             			<ul>
-             				<li>edgeR</li>
-             				<li>DESeq2</li>
-             				<li>KS</li>
-             				<li>Mann whitney U</li>
-             				<li>T-test</li>
-             				<li>SCDE - specifically for single cell</li>
-             				<li>T-test</li>
-             				<li>AUROC</li>
-             				<li>And many more</li>             				             				             				             				             				             				             				             				
-             			</ul>
+          <section>
+            <p>Single cell RNA-seq data is described as a Zero-Inflated negative binomal distribution</p>
+            <img src="img/zi-nb.png" width="60%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-						</p>
-             		</section>
+          <section>
+            <p>In comparison to a bulk RNA-seq distribution</p>
+            <img src="img/nb.png" width="60%" style="background:none; border:none; box-shadow:none; ">
+          </section>
 
-             		<section>
-             			<h3> AUROC to find markers</h3>
-             									<pre><code data-trim contenteditable>
-def findMarkers(cpt,cells1,cells2,genes):
-    aucScores=[]
-    from sklearn import metrics
-    for gene in genes:
-        y=[1]*len(cells2)+[2]*len(cells1)
-        pred = np.concatenate((cpt.loc[gene,cells2],cpt.loc[gene,cells1]))
-        fpr, tpr, thresholds = metrics.roc_curve(y, pred, pos_label=2)
-        aucScores.append(metrics.auc(fpr, tpr))
-    return pd.DataFrame(aucScores,index=genes,columns=['Score'])
-    						</code></pre>		             			
-             		</section>
-             		
-             		<section>
-           									<pre><code data-trim contenteditable>             		
-aurocScoresAll=pd.DataFrame()
-for cluster in range(1,8,1):
+          <section>
+            <h3> Dropout rates </h3>
+            <p>
+              These models introduce a new parameter  dd , for the dropout rate,
+              to the negative binomial model. The dropout
+              rate of a gene is strongly correlated with the mean expression of
+              the gene.
+            </p>
+          </section>
 
-    cells1=tsnedata_dbscan[tsnedata_dbscan['dbCluster']==cluster].index
-    cells2=tsnedata_dbscan.index.difference(cells1)
+          <section>
+            <h3> Detection Probability </h3>
+            <img src="img/DetectionAsAFunctionOfExpression.png" width="60%" style="background:none; border:none; box-shadow:none; ">
+          </section>
+        </section>
 
-    data1=cpt.loc[cpt.index,cells1].apply(expMean,1)
-    data2=cpt.loc[cpt.index,cells2].apply(expMean,1)
-    totaldiff=(data1-data2)
-    genes=totaldiff[totaldiff>1.].index
+        <section>
+          <section>
+            <h3>Matrix -> Insights</h3>
+            <p>
+              The primary goal of every single cell experiment is to describe
+              the heterogeneity of cell types present in the starting tissue
+              population.
+            </p>
+          </section>
 
-    aurocScores=findMarkers(cpt,
-                  cells1,
-                  cells2,
-                  genes
-                 )
-    aurocScores['Associated.Gene.Name']=featuredata['Associated.Gene.Name']
-    aurocScores['dbCluster']=cluster
-    aurocScoresAll=aurocScoresAll.append(aurocScores)
-			    </code></pre>		             			
+          <section>
+            <h3>Challenges</h3>
+            <p>
+              Exponential growth of new methodologies to generate, process, and
+              analysis scRNA-seq data.
+            </p>
+            <p>
+              Many methods rely on heuristics or empirical results, and lack
+              proper validation with existing methods.
+            </p>
+          </section>
 
-             		</section>
-             		
-             		<section>
-             			<h3> Visualize marker expression across all cells </h3>
-             			<img src="img/markers.png" width="120%" style="background:none; border:none; box-shadow:none; ">                		                
-             		</section>
-             		
-             		<section>
-             			<h3> Marker genes </h3>
-             			<p>Plp1,Cldn11,Ugt8a,Sirt2,Mag,Mobp,Cnp,Mbp,Cck,Pcp4,Nap1l5,Meg3,Gap43,Rgs5,Itm2a,Tmsb4x,Slc16a1,Igfbp7,Hbb-bt,Hbb-bs,Bsg,Klf2,Junb,Hba-a1,Hba-a2,Sparc,Ctla2a,Cldn5,Dbi,Atp1a2,Slc1a2,Cst3,Fabp5,Plpp3,Id3,Sparcl1,Ptn,Apoe,Gja1,Fabp7,Cpe,Mt3,Mt1,Ndrg2,Clu,Aldoc,Id2,Ckb,Pla2g7,Aqp4,Col3a1,Igfbp2,Ptgds,S100a6,Col1a2,Ptn,Cxcl12,Nupr1,Igf2,Dcn,Lum,Col4a1,Klf2,Junb,Sparc,Vtn,Col1a1,Lgals1,Apod,Fcer1g,B2m,Cst3,Tmsb4x,P2ry12,Ctss,C1qb,C1qc,C1qa,Tyrobp,Ftl1,Ctsd,Junb,Ccl2,Ccl7,Ccl12,Ccl3,Ccl4,Cd83,Hexb,Rps29,Lgmn,Sepp1</p>
-             		</section>
-             	</section>
-				
-				<section>
-					<h3> CellView: Interactive Exploration Of High Dimensional Single Cell RNA-Seq Data </h3>
-					<p> A web application to visualize and explore single cell RNA-seq data </p>
-           									<pre><code data-trim contenteditable>             		
-mkRds(cpt,featuredata,tsnedata_dbscan)
-			    </code></pre>		  
-			    <p> Download Data.Rds and we will upload to this website:
-			    <br></br>
-			    https://mbolisetty.shinyapps.io/CellView/	
-			    </p>           			
-					
-				</section>
+          <section>
+            <h3>9/10 Analysts agree</h3>
+            <p>
+              The majority of analysis methods roughly agree with the following
+              pipeline:
+            </p>
+            <ul>
+              <li>Filtering low quality cells</li>
+              <li>Filtering really sparsely expressed genes</li>
+              <li>Normalize gene expression</li>
+              <li>Feature selection for clustering</li>
+              <li>Dimensionality reduction</li>
+              <li>Cluster identification</li>
+              <li>Marker gene identification</li>
+              <li>Cell type inference</li>
+            </ul>
+          </section>
 
-             	<section>
-             		<section>
-             			<h3> 732,000 and counting </h3>
-             			<iframe width="600" height="400" frameborder="0" scrolling="no" data-src="https://plot.ly/~mbolisetty/1562.embed"></iframe>
-             		</section>
-             		
-             	</section>
+          <section>
+            <h3>Analysis Challenges</h3>
+            How to...
+            <ul>
+              <li>discriminate lowly expressing cells from ambient mRNA?</li>
+              <li>reliably call expressed genes?</li>
+              <li>cluster cells without bias?</li>
+              <li>id cell types without clustering?</li>
+              <li>infer celltypes from marker genes? without biological insight?</li>
+            </ul>
+          </section>
 
-             	<section>
-             		<h3> Acknowledgments </h3>
-             		<br></br>
-             		<p>
-	             		<ul>
-	             		<li>Sandeep Namburi - Research IT</li>
-	             		<li>Aditya Kovuri - Research IT </li>
-	             		<li>Sandy Daigle - Single cell </li>
-	             		<li>Genome Technologies</li>
-	             		</ul>
-             		</p>
-             	</section>
+          <section>
+            <h3>Philosphical Challenges</h3>
+            <ul>
+              <li>How to define a "cell type"?</li>
+              <li>Do cells that cluster together always belong to the same "type"?</li>
+            </ul>
+          </section>
 
-             	
-             	<section>
-             		<h3> Questions? </h3>
-             		<br></br>
-             		<br></br>
-             		<p>email me: mohan.bolisetty@jax.org </p>
-             		<p>slides: mohanbolisetty.github.io/JAX-NeuroGeneticsSClDataAnalysis/
-             	</section>
-             	
+          <section>
+            <h3>Let's dive in!</h3>
+            <p>
+              Let's open the e-notebooks and make sure you have everything you
+              need
+            </p>
+            <p>
+              Each of you has an Amazon EC2 cloud instance with Jupyter notebooks
+              running Python3 kernels
+            </p>
+          </section>
+        </section>
 
-            </div>
-        </div>
-        <script src="js/reveal.js"></script>
-        <script>
-            Reveal.initialize();
-        </script>
-    </body>
+        <section>
+          <section>
+            <h3>Analysis details (optional)</h3>
+          </section>
+
+          <section>
+            <h3>Differential Expression (DE) analysis</h3>
+            <p>
+              Every analyses with analyzing bulk RNA-seq data eventually
+              involves to identifying differentially expressed genes between
+              experimental conditions.  Many methods, e.g. DESeq2 and edgeR,
+              have been developed for bulk RNA-seq. These algorithms although
+              not ideal for single cell RNA-seq data can still provide robust
+              results.
+            </p>
+          </section>
+
+          <section>
+            <p>Some of the many algorithms are listed here for reference:
+            <ul>
+              <li>edgeR</li>
+              <li>DESeq2</li>
+              <li>KS</li>
+              <li>Mann whitney U</li>
+              <li>T-test</li>
+              <li>SCDE - specifically for single cell</li>
+              <li>T-test</li>
+              <li>AUROC</li>
+              <li>And many more</li>
+            </ul></p>
+          </section>
+
+          <section>
+            <h3> Marker genes </h3>
+            <p>
+              Plp1, Cldn11, Ugt8a, Sirt2, Mag, Mobp, Cnp, Mbp, Cck, Pcp4,
+              Nap1l5, Meg3, Gap43, Rgs5, Itm2a, Tmsb4x, Slc16a1, Igfbp7, Hbb-bt,
+              Hbb-bs, Bsg, Klf2, Junb, Hba-a1, Hba-a2, Sparc, Ctla2a, Cldn5,
+              Dbi, Atp1a2, Slc1a2, Cst3, Fabp5, Plpp3, Id3, Sparcl1, Ptn, Apoe,
+              Gja1, Fabp7, Cpe, Mt3, Mt1, Ndrg2, Clu, Aldoc, Id2, Ckb, Pla2g7,
+              Aqp4, Col3a1, Igfbp2, Ptgds, S100a6, Col1a2, Ptn, Cxcl12, Nupr1,
+              Igf2, Dcn, Lum, Col4a1, Klf2, Junb, Sparc, Vtn, Col1a1, Lgals1,
+              Apod, Fcer1g, B2m, Cst3, Tmsb4x, P2ry12, Ctss, C1qb, C1qc , C1qa,
+              Tyrobp, Ftl1, Ctsd, Junb, Ccl2, Ccl7, Ccl12, Ccl3 , Ccl4, Cd83,
+              Hexb, Rps29, Lgmn, Sepp1
+            </p>
+          </section>
+
+          <section>
+            <h3>Cell type inference</h3>
+            <ul>
+              <li>Fabp7 (BLBP) -  astrocytes</li>
+              <li>Pcp4 - Purkinje neurons</li>
+              <li></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h3>CellView</h3>
+          <p>
+            A <a href="https://doi.org/10.1101/123810">web application</a> to
+            visualize <br> and explore single cell RNA-seq data.
+          </p>
+
+          <pre><code data-trim contenteditable>
+spl.write_rds(cpt, feature_data, cluster_data)
+          </code></pre>
+
+          <p> Download Data.Rds and we will upload to this website:
+          <br>
+          <a href="https://mbolisetty.shinyapps.io/CellView/">
+            https://mbolisetty.shinyapps.io/CellView</a>
+          <br>
+          <br>
+          Or if within the JAX network:
+          <br>
+          <a href="http://ctshiny01.jax.org/flynnb/CellView/">
+          http://ctshiny01.jax.org/flynnb/CellView/</a>
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h3> 2,300,000 and counting </h3>
+            <iframe width="600" height="400" frameborder="0" scrolling="no" data-src="https://plot.ly/~mbolisetty/1562.embed"></iframe>
+          </section>
+        </section>
+
+        <section>
+          <h3> Other resources</h3>
+          <ul>
+            <li><a href="http://satijalab.org/seurat/">Seurat analysis package
+                (R)</a></li>
+            <li><a
+                href="https://hemberg-lab.github.io/scRNA.seq.course/index.html">
+                Hemberg Lab scRNA-seq Analysis e-Book (Sanger Institute)</a></li>
+            <li><a
+                href="https://www.10xgenomics.com/10x-university/single-cell/">
+                10X Genomics University resources</a></li>
+            <li><a
+                href="https://github.com/seandavi/awesome-single-cell">
+                Awesome Single-Cell repository (Sean Davis)</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Acknowledgments </h3>
+          <br>
+          <ul>
+            <li>Sandeep Namburi - Research IT</li>
+            <li>Aditya Kovuri - Research IT </li>
+            <li>Mohan Bolisetty - Single cell </li>
+            <li>Paul Robson - Single cell </li>
+            <li>Mike Samuels - Single cell </li>
+            <li>Genome Technologies</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3> Questions? </h3>
+            <br>
+            <br>
+            <p>
+              email me:
+              <br>
+              <a href="mailto:bill.flynn@jax.org">bill.flynn@jax.org</a>
+            </p>
+            <p>
+              slides:
+              <br>
+              <a href="wflynny.github.io/JAX-NeuroGeneticsSClDataAnalysis/">
+                wflynny.github.io/JAX-NeuroGeneticsSClDataAnalysis/</a>
+            </p>
+        </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize();
+    </script>
+  </body>
 </html>
